@@ -47,6 +47,14 @@ Use this skill when the user wants a clean PR branch from `working` that contain
    - Run `git diff --stat ups/main...HEAD`.
    - Confirm the local-only env commits are absent from the new branch.
 
+6. Always draft PR metadata.
+   - Generate a PR title based on the non-local commits on the clean branch.
+   - Generate a PR body with at least:
+     - `## Summary`
+     - `## Test plan`
+   - The title and body should describe only the non-local changes included in the PR branch.
+   - Even if the user only asked for branch preparation, still provide the PR title and body unless they explicitly say not to.
+
 ## Command pattern
 
 Use this sequence, adapting the branch name and commit list:
@@ -61,6 +69,18 @@ git log --oneline --decorate --max-count 10
 git diff --stat ups/main...HEAD
 ```
 
+Then produce:
+
+```markdown
+Title: <concise PR title>
+
+## Summary
+- <1-3 bullets covering the included non-local changes>
+
+## Test plan
+- [x] <test command run or validation performed>
+```
+
 ## Guardrails
 
 - Never remove the env commits from `working`.
@@ -68,3 +88,4 @@ git diff --stat ups/main...HEAD
 - If cherry-picks conflict, stop and explain the conflict before continuing.
 - If there are no non-local commits on `working`, say so and do not create an empty PR branch.
 - Prefer local-only commits to use the `local:` prefix.
+- Never include local-only commits in the generated PR title or body.
