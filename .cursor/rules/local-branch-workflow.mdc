@@ -1,0 +1,16 @@
+---
+description: Local working-branch workflow for env commits and upstream PR prep
+alwaysApply: true
+---
+
+# Local Branch Workflow
+
+This repo uses a local `working` branch that intentionally carries local-only setup commits.
+
+- Treat any commit whose subject starts with `local:` as local-only.
+- Always treat the existing commit with subject `claude init` as local-only too.
+- Local-only commits should stay on `working` and should not be included in upstream PR branches.
+- When preparing a PR branch, branch from `ups/main` and cherry-pick only non-local commits from `working`.
+- When syncing `working` with `ups/main`, preserve the local-only commits on top.
+- Prefer keeping local-only setup commits squashed/rebased near the top of `working` and using the `local:` prefix for new ones.
+- Do not rewrite or drop local-only commits unless the user explicitly asks.
