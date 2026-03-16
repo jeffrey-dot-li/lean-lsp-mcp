@@ -76,7 +76,7 @@ uvx lean-lsp-mcp --transport sse              # Server-sent events
 
 **Output suppression:** File-descriptor-level stdout/stderr capture prevents subprocess noise from leaking into stdio MCP transport.
 
-**Graceful degradation:** Local Loogle → remote API; REPL unavailable → LSP multi-attempt; ripgrep missing → `lean_local_search` disabled.
+**Graceful degradation:** Local Loogle → remote API; REPL unavailable or exact `column` requested → LSP multi-attempt; ripgrep missing → `lean_local_search` disabled.
 
 ### Tool Categories
 1. **LSP-based file tools:** `lean_file_outline`, `lean_diagnostic_messages`, `lean_goal`, `lean_term_goal`, `lean_hover_info`, `lean_declaration_file`, `lean_completions`, `lean_code_actions`, `lean_get_widgets`, `lean_get_widget_source`

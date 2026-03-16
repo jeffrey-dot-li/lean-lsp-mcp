@@ -1,0 +1,13 @@
+---
+description: Stop and notify the user if the persistent shell session becomes corrupted
+alwaysApply: true
+---
+
+# Shell State Recovery
+
+If the persistent shell session appears corrupted, stop immediately and tell the user so they can fix it.
+
+- Treat errors like `cat: command not found`, `dump_bash_state: command not found`, or similar shell-wrapper failures as a broken persistent shell session.
+- Do not continue trying workarounds in that session.
+- Do not keep retrying unrelated commands.
+- Tell the user the shell state appears broken and ask them to reload/reset it before continuing.
