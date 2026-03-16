@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "lean-lsp-mcp": {
+      "command": "${workspaceFolder}/.devenv/profile/bin/uv",
+      "args": ["run", "lean-lsp-mcp"],
+      "cwd": "${workspaceFolder}",
+      "env": {
+        "PATH": "${workspaceFolder}/.devenv/profile/bin:${env:PATH}",
+        "LEAN_PROJECT_PATH": "${workspaceFolder}/tests/test_project"
+      }
+    }
+  }
+}
